@@ -1,0 +1,7 @@
+'Bill','Ponderosa','bpond','password',100000001,'M',123456789,2065559999,'Buttface ln'
+'Sweet','Dee','bird','password',100000002,'F',251859104,4255559999,'Paddys Bar'
+'Danny','Devito','trashman','password',100000003,'M',491349746,2069995555,'Paddys Bar'
+'Charlie','Day','dayman','password',100000004,'M',696969696,2066600111,'Paddys Bar'
+'Mac','Man','nightman','password',100000005,'M',102938475,425999999,'Paddys Pub'
+'Tina','Belcher','uhhh','password',100000006,'F',564738291,4253332222,'Bobs Burger Joint'
+'Linda','Belcher','Broadway','password',100000007,'F',290582018,2219346946,'Bobs Burger Joint'
