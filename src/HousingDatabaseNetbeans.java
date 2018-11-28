@@ -1,4 +1,4 @@
-package housingdatabasenetbeans;
+
 
 import java.util.Scanner;
 
