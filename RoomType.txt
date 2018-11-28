@@ -1,1 +1,6 @@
-1,'Single','Apartment',3,2,'Double',0
+1,'Apt_2B_4P','Apartment',2,4,'Twin',0
+2,'Apt_4B_4P','Apartment',4,4,'Twin',0
+3,'Suite_1B_1P','Suite',1,1,'Twin',0
+4,'Suite_1B_2P','Suite',1,2,'Double',1
+5,'Suite_2B_2P','Suite',2,2,'Double',1
+6,'Suite_2B_3P','Suite',2,3,'Twin',0
