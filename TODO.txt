@@ -1,0 +1,6 @@
+-Need to figure out the way to fulfill application. Need to cross reference preferences with Room/Roomtype
+		@ about line 210
+
+-Main menu needs to be a while loop or something
+
+-Figure out why Application method is hanging
