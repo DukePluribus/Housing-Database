@@ -17,12 +17,14 @@
     <session id="-150530750">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -37,13 +39,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7222" />
+          <entry key="java" value="7431" />
           <entry key="txt" value="482" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7222" />
+          <entry key="JAVA" value="7431" />
           <entry key="PLAIN_TEXT" value="482" />
         </counts>
       </usages-collector>
@@ -54,22 +56,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="207" column="16" selection-start-line="207" selection-start-column="16" selection-end-line="207" selection-end-column="16" />
+            <state relative-caret-position="1252">
+              <caret line="212" column="5" lean-forward="true" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#login#0;class#Application#0" />
+                <element signature="method#adminLogin#0;class#Application#0" />
+                <element signature="method#checkAvailability#0;class#Application#0" />
+                <element signature="method#dispMaintDepRep#0;class#Application#0" />
+                <element signature="method#loadData#0;class#Application#0" />
+                <element signature="method#getDate#0;class#Application#0" />
+                <element signature="method#getStringInput#0;class#Application#0" />
+                <element signature="method#getIntInput#0;class#Application#0" />
+                <element signature="method#getUserInput#0;class#Application#0" />
+                <element signature="method#adminView#0;class#Application#0" />
+                <element signature="method#printMainMenu#0;class#Application#0" />
                 <element signature="method#menuDisplayTitleHeader#0;class#Application#0" />
                 <element signature="method#menuDisplaySubtitleHeader#0;class#Application#0" />
                 <element signature="method#printStars#0;class#Application#0" />
                 <element signature="method#printTabs#0;class#Application#0" />
                 <element signature="method#printOptionsAdministrators#0;class#Application#0" />
-                <element signature="method#getStringInput#0;class#Application#0" />
-                <element signature="method#getIntInput#0;class#Application#0" />
-                <element signature="method#insertApp#0;class#Application#0" />
-                <element signature="method#login#0;class#Application#0" />
-                <element signature="method#loadData#0;class#Application#0" />
-                <element signature="method#checkAvailability#0;class#Application#0" />
-                <element signature="method#getDate#0;class#Application#0" />
               </folding>
             </state>
           </provider>
@@ -102,9 +108,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
+    <option name="x" value="-10" />
     <option name="width" value="1030" />
-    <option name="height" value="1039" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -112,7 +118,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -128,6 +133,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -190,8 +196,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13087249" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13489933" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -228,31 +235,29 @@
     <option name="LAST_COMMIT_MESSAGE" value="Load method fully implemented. It will load from the .txt files that are now included in the folder. Just need to make sure the DB is empty before running load.&#10;Feel free to add more lines to the .txt files, just be sure to pay attention to foreign key constraints.&#10;Implemented method to return available rooms.&#10;Once I have the outline for the menus, I can start implementing methods to carry out menu options. Should be pretty easy." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HousingDatabaseNetbeans.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="116" column="39" lean-forward="true" selection-start-line="116" selection-start-column="39" selection-end-line="116" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HousingDatabaseNetbeans.java" />
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="207" column="16" selection-start-line="207" selection-start-column="16" selection-end-line="207" selection-end-column="16" />
+        <state relative-caret-position="1252">
+          <caret line="212" column="5" lean-forward="true" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#login#0;class#Application#0" />
+            <element signature="method#adminLogin#0;class#Application#0" />
+            <element signature="method#checkAvailability#0;class#Application#0" />
+            <element signature="method#dispMaintDepRep#0;class#Application#0" />
+            <element signature="method#loadData#0;class#Application#0" />
+            <element signature="method#getDate#0;class#Application#0" />
+            <element signature="method#getStringInput#0;class#Application#0" />
+            <element signature="method#getIntInput#0;class#Application#0" />
+            <element signature="method#getUserInput#0;class#Application#0" />
+            <element signature="method#adminView#0;class#Application#0" />
+            <element signature="method#printMainMenu#0;class#Application#0" />
             <element signature="method#menuDisplayTitleHeader#0;class#Application#0" />
             <element signature="method#menuDisplaySubtitleHeader#0;class#Application#0" />
             <element signature="method#printStars#0;class#Application#0" />
             <element signature="method#printTabs#0;class#Application#0" />
             <element signature="method#printOptionsAdministrators#0;class#Application#0" />
-            <element signature="method#getStringInput#0;class#Application#0" />
-            <element signature="method#getIntInput#0;class#Application#0" />
-            <element signature="method#insertApp#0;class#Application#0" />
-            <element signature="method#login#0;class#Application#0" />
-            <element signature="method#loadData#0;class#Application#0" />
-            <element signature="method#checkAvailability#0;class#Application#0" />
-            <element signature="method#getDate#0;class#Application#0" />
           </folding>
         </state>
       </provider>

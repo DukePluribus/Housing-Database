@@ -15,8 +15,9 @@ public class Application {
             DriverManager.registerDriver(new Driver());
             Connection conn = DriverManager.getConnection(dbURL, "student", "password");
             //dispMaintDepRep(conn);
-            //loadData(conn);
-            runProgram(conn);
+            loadData(conn);
+            checkAvailability(conn);
+            //runProgram(conn);
             //checkAvailability(conn);
         } catch (SQLException ex){
             System.out.println(ex);
@@ -32,20 +33,13 @@ public class Application {
     \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
      */
 
-    public static void printMainMenu(){
-        menuDisplayTitleHeader();
-        System.out.println("1. Resident Login");
-        System.out.println("2. Applicant Registration/Apply");
-        System.out.println("3. Admin");
-        System.out.println("4. Quit");
-    }
 
     public static Boolean runProgram(Connection conn){
         Scanner userInput = new Scanner(System.in);
         printMainMenu();
         String userResponse = userInput.next();
         if(userResponse.equals("3")){
-            adminScreen(conn);
+            adminView(conn);
             return true;
         }
         if(userResponse.equals("2")){
@@ -62,113 +56,6 @@ public class Application {
         else{
             return true;
         }
-    }
-
-
-    public static void menuDisplayTitleHeader(){
-        printStars(80);
-        System.out.println();
-        printTabs(4);
-        printStars(12);
-        System.out.println();
-        printTabs(3);
-        System.out.print("Welecome to the Housing System\n");
-        printTabs(4);
-        printStars(12);
-        System.out.println();
-        printStars(80);
-        System.out.println();
-        //prints header file
-        //header file includes option chosen
-    }
-
-    public static void menuDisplaySubtitleHeader(String selection){
-        printStars(80);
-        System.out.println();
-        printTabs(3);
-        System.out.print("Welecome to bellevue College Housing System");
-        System.out.println();
-        printTabs(4);
-        System.out.println(selection+"\n\n");
-        printStars(80);
-        System.out.println();
-    }
-
-    public static void printStars(int numStars){
-
-        for(int i =0; i < numStars; i++){
-            System.out.print("*");
-        }
-    }
-
-    public static void printTabs(int numTabs){
-
-        for(int i =0; i < numTabs; i++){
-            System.out.print("\t");
-        }
-    }
-
-
-    public static void adminScreen(Connection conn){
-        int userID = login(conn);
-        if(adminLogin(conn, userID)) {
-            boolean running = true;
-            menuDisplaySubtitleHeader("Administrators Staff");
-            while(running == true) {
-                System.out.println();
-                int choice = printOptionsAdministrators();
-                if (choice == 4) {
-                    dispMaintDepRep(conn);
-                } else if (choice == 6){
-                 running = false;
-                }
-                else {
-                    System.out.println("Please excuse our dust! That feature is still under construction.");
-                }
-            }
-        } else {
-            System.out.println("Sorry, that user is not an administrator");
-        }
-    }
-    public static int printOptionsAdministrators(){
-            System.out.println("1. Manage Residents");
-            System.out.println("2. Manage Applicants");
-            System.out.println("3. Demographic Studies");
-            System.out.println("4. Manage Maintenance Orders");
-            System.out.println("5. Administrative Reports");
-            System.out.println("6. Quit");
-            return getIntInput("Please select an option ");
-    }
-
-
-    public static String getUserInput(){
-        Scanner userInput = new Scanner(System.in);
-        String userResponse = userInput.next();
-        // userInput.close();
-        return userResponse;
-    }
-
-    public static String getStringInput(String question){
-        System.out.print(question);
-        String userInput = getUserInput();
-        System.out.println();
-        return userInput;
-    }
-    public static int getIntInput(String question){
-        Boolean success = false;
-        int result = 0;
-        while(success == false) {
-            try {
-                System.out.print(question);
-                success = true;
-                result = Integer.parseInt(getUserInput());
-            } catch (NumberFormatException ex) {
-                System.out.println("Improper format. Please enter a number.");
-                success = false;
-            }
-        }
-        System.out.println();
-        return result;
     }
 
     public static void applicantView(Connection conn){
@@ -244,6 +131,13 @@ public class Application {
         System.out.println("Thank you for your application.");
     }
 
+    /*
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+                            Login Handling
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+    */
 
     //Returns the idNum of the person logging in
     public static int login(Connection conn){
@@ -274,7 +168,6 @@ public class Application {
         }
         return idNum;
     }
-
     public static boolean adminLogin(Connection conn, int userId){
         try{
             String query = "SELECT COUNT(IDnum) FROM Administrator WHERE IDnum = "+userId+";";
@@ -290,32 +183,13 @@ public class Application {
         }
         return true;
     }
-
-
-    static void loadData(Connection conn){
-        String[] tables = {"Person", "Employee","StudentAlumni", "Administrator","Maintainence", "Applicant",
-                "Resident","RoomType","Room","Application","MaintenanceRequest"};
-        for (String table : tables) {
-            System.out.println("Loading " + table);
-            File file = new File(table + ".txt");
-            Scanner scan = null;
-            try {
-                scan = new Scanner(file);
-                while (scan.hasNextLine()) {
-                    String line = scan.nextLine();
-                    String query = "INSERT INTO " + table + " VALUES (" + line + ");";
-                    PreparedStatement p = conn.prepareStatement(query);
-                    p.clearParameters();
-                    p.execute();
-                }
-            } catch (FileNotFoundException e) {
-                System.out.println("File not found.");
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
-            System.out.println("File " + table + " is loaded");
-        }
-    }
+    /*
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+           Output only methods, no menus
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+    */
     static void checkAvailability(Connection conn){
         try{
             String query = "SELECT TypeName, RoomNum, BuildingNum, Village, Address FROM RoomType, Room WHERE RoomStatus=0;";
@@ -325,11 +199,11 @@ public class Application {
             System.out.println("Available rooms:");
             System.out.println("--------------------------------------------------------");
             while (r.next()) {
-            //Pulls data from the result to build the return
+                //Pulls data from the result to build the return
                 String rType = r.getString(1); String rNum = r.getString(2);
                 String bNum = r.getString(3); String village = r.getString(4);
                 String address = r.getString(5);
-            //Builds the block of text to tell the rooms available
+                //Builds the block of text to tell the rooms available
                 System.out.println("ROOM TYPE: " + rType + "\nVILLAGE: " + village + "\nADDRESS: " + address);
                 System.out.println("--------------------------------------------------------");
             }
@@ -337,12 +211,6 @@ public class Application {
             System.out.println(ex);
         }
     }
-    static String getDate(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        return dateFormat.format(date);
-    }
-
     static void dispMaintDepRep(Connection conn) {
         try {
             String date = getStringInput("What date would you like to look for? (YYYY-MM-DD format): ");
@@ -363,5 +231,162 @@ public class Application {
             System.out.println(e);
         }
     }
+    /*
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+           Ease of Use Methods, not doing the chunky work
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+    */
+    static void loadData(Connection conn){
+            String[] tables = {"Person", "Employee","StudentAlumni", "Administrator","Maintainence", "Applicant",
+                    "Resident","RoomType","Room","Application","MaintenanceRequest"};
+            for (String table : tables) {
+                System.out.println("Loading " + table);
+                File file = new File(table + ".txt");
+                Scanner scan = null;
+                try {
+                    scan = new Scanner(file);
+                    while (scan.hasNextLine()) {
+                        String line = scan.nextLine();
+                        String query = "INSERT INTO " + table + " VALUES (" + line + ");";
+                        PreparedStatement p = conn.prepareStatement(query);
+                        p.clearParameters();
+                        p.execute();
+                    }
+                } catch (FileNotFoundException e) {
+                    System.out.println("File not found.");
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
+                System.out.println("File " + table + " is loaded");
+            }
+        }
+    static String getDate(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+    public static String getStringInput(String question){
+        System.out.print(question);
+        String userInput = getUserInput();
+        System.out.println();
+        return userInput;
+    }
+    public static int getIntInput(String question){
+        Boolean success = false;
+        int result = 0;
+        while(success == false) {
+            try {
+                System.out.print(question);
+                success = true;
+                result = Integer.parseInt(getUserInput());
+            } catch (NumberFormatException ex) {
+                System.out.println("Improper format. Please enter a number.");
+                success = false;
+            }
+        }
+        System.out.println();
+        return result;
+    }
+    public static String getUserInput(){
+        Scanner userInput = new Scanner(System.in);
+        String userResponse = userInput.next();
+        // userInput.close();
+        return userResponse;
+    }
+
+    /*
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+                    Menus and User Views
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+     */
+    public static void adminView(Connection conn){
+        int userID = login(conn);
+        if(adminLogin(conn, userID)) {
+            boolean running = true;
+            menuDisplaySubtitleHeader("Administrators Staff");
+            while(running == true) {
+                System.out.println();
+                int choice = printOptionsAdministrators();
+                if (choice == 4) {
+                    dispMaintDepRep(conn);
+                } else if (choice == 6){
+                    running = false;
+                }
+                else {
+                    System.out.println("Please excuse our dust! That feature is still under construction.");
+                }
+            }
+        } else {
+            System.out.println("Sorry, that user is not an administrator");
+        }
+    }
+
+    /*
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+                    Menus and Formatting
+    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+     */
+    public static void printMainMenu(){
+        menuDisplayTitleHeader();
+        System.out.println("1. Resident Login");
+        System.out.println("2. Applicant Registration/Apply");
+        System.out.println("3. Admin");
+        System.out.println("4. Quit");
+    }
+    public static void menuDisplayTitleHeader(){
+        printStars(80);
+        System.out.println();
+        printTabs(4);
+        printStars(12);
+        System.out.println();
+        printTabs(3);
+        System.out.print("Welecome to the Housing System\n");
+        printTabs(4);
+        printStars(12);
+        System.out.println();
+        printStars(80);
+        System.out.println();
+        //prints header file
+        //header file includes option chosen
+    }
+    public static void menuDisplaySubtitleHeader(String selection){
+        printStars(80);
+        System.out.println();
+        printTabs(3);
+        System.out.print("Welecome to bellevue College Housing System");
+        System.out.println();
+        printTabs(4);
+        System.out.println(selection+"\n\n");
+        printStars(80);
+        System.out.println();
+    }
+    public static void printStars(int numStars){
+
+        for(int i =0; i < numStars; i++){
+            System.out.print("*");
+        }
+    }
+    public static void printTabs(int numTabs){
+
+        for(int i =0; i < numTabs; i++){
+            System.out.print("\t");
+        }
+    }
+    public static int printOptionsAdministrators(){
+        System.out.println("1. Manage Residents");
+        System.out.println("2. Manage Applicants");
+        System.out.println("3. Demographic Studies");
+        System.out.println("4. Manage Maintenance Orders");
+        System.out.println("5. Administrative Reports");
+        System.out.println("6. Quit");
+        return getIntInput("Please select an option ");
+    }
+
 }
 
