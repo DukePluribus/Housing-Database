@@ -15,9 +15,9 @@ public class Application {
             DriverManager.registerDriver(new Driver());
             Connection conn = DriverManager.getConnection(dbURL, "student", "password");
             //dispMaintDepRep(conn);
-            loadData(conn);
-            checkAvailability(conn);
-            //runProgram(conn);
+            //loadData(conn);
+            //checkAvailability(conn);
+            runProgram(conn);
             //checkAvailability(conn);
         } catch (SQLException ex){
             System.out.println(ex);
@@ -58,28 +58,8 @@ public class Application {
         }
     }
 
-    public static void applicantView(Connection conn){
-        menuDisplaySubtitleHeader("Application Menu");
-        System.out.println("Please log in.");
-        login(conn);
-        boolean running = true;
-        while (running ){
-            System.out.println("Please choose an option.\n1. View available housing\n2. Submit an application\n3. Go back\n");
-            int userChoice = getIntInput("Please choose an option.\n1. View available housing\n2. Submit an application\n3. Go back\n");
-            if (userChoice == 1){
-                checkAvailability(conn);
-            } else if (userChoice == 2){
-                applicationForm(conn);
-            } else if (userChoice == 3){
-                running = false;
-            } else {
-                System.out.println("Sorry, that is not a known option.");
-            }
-        }
-    }
 
     public static void applicationForm(Connection conn){
-        int appResult = 0;
         menuDisplaySubtitleHeader("Application Form");
         System.out.println("Fill out this Form Below: ");
         int idNum = getIntInput("Student ID Number: ");
@@ -92,33 +72,76 @@ public class Application {
         String query = "INSERT INTO Application VALUES (NULL,"+idNum+",0,'"+getDate()+"','"+rmtPref+"','"+spouse+"',"+rPref1+","+rPref2+","+rPref3+");";
         insertApp(conn, query);
 
-    //Here, we will take the application we just made and try to fulfill it
-//        query = "SELECT AppNum FROM Application";
-//        try {
-//            ResultSet r = getResultSet(conn, query);
-//            r.last();
-//            int appNum = r.getInt(1);
-//            appResult = fulfillApplication(conn, appNum);
-//        }catch (SQLException e){
-//            System.out.println(e);
-//        }
-//
-//
-//
-//        if (appResult == 1){
-//            System.out.println("Congratulations! You are now the proud resident of ");
-//        }
+        int roomMatch = appCheckRoomAvail(conn, rPref1, rPref2, rPref3);
+
+        if(roomMatch == 0){
+    //Try to find ANY available room
+            try{
+                ResultSet r = getResultSet(conn,"SELECT RoomNum, BuildingNum, Address FROM Room WHERE RoomStatus = 0;");
+                if(r.next()){
+    //Case where there is an open room that doesn't match their preference
+                    int roomNum = r.getInt(1), buildNum = r.getInt(2);
+                    String address = r.getString(3);
+                    //Updates the room to now be full
+                    PreparedStatement p = conn.prepareStatement("UPDATE Room SET RoomStatus = 1 WHERE RoomNum = " + roomNum + " AND BuildingNum = " + buildNum + "AND Address = '" + address + "';");
+                    p.clearParameters();
+                    p.execute();
+                    //Puts the idNum in the resident table
+                    insertResident(conn, idNum);
+                } else {
+    //Fail case if there are no open rooms
+                    System.out.println("So sorry, but it looks like there are no available rooms at this time.");
+                }
+            }catch (SQLException e){
+                System.out.println(e);
+            }
+        } else {
+    //This is the case where we have found a room that works with their preferences
+            System.out.println("We have found a room that matches one of your preferences!");
+            ResultSet r=getResultSet(conn,"SELECT RoomNum, BuildingNum, Address FROM Room WHERE TypeNum="+roomMatch);
+            try{
+                r.next();
+                int roomNum = r.getInt(1), buildNum = r.getInt(2);
+                String address = r.getString(3);
+            //Updates the room to now be full
+                PreparedStatement p = conn.prepareStatement("UPDATE Room SET RoomStatus = 1 WHERE RoomNum = "+roomNum+" AND BuildingNum = "+buildNum+"AND Address = '"+address+"';");
+                p.clearParameters();
+                p.execute();
+            //Puts the idNum in the resident table
+                insertResident(conn, idNum);
+            }catch (SQLException e){
+                System.out.println(e);
+            }
+        }
     }
-    public static ResultSet getResultSet(Connection conn, String query){
-        ResultSet r = null;
+
+    public static int appCheckRoomAvail(Connection conn, int pref1, int pref2, int pref3){
+        System.out.println("Checking Room Availability");
+        int[] pref = {pref1, pref2, pref3};
+        for(int i=0;i<3;i++){
+            try {
+                String query = "SELECT RoomNum FROM Room WHERE TypeNum=" + pref[i] + " AND RoomStatus=0;";
+                ResultSet r = getResultSet(conn, query);
+                r.next();
+                if (r.getInt(1) == 0) {
+                    return pref[i];
+                }
+            }catch (SQLException e){
+                System.out.println(e);
+            }
+        }
+        return 0;
+    }
+
+
+    public static void insertResident(Connection conn, int idNum) {
         try {
-            PreparedStatement p = conn.prepareStatement(query);
+            PreparedStatement p = conn.prepareStatement("INSERT INTO Resident VALUES(" + idNum + ");");
             p.clearParameters();
-            r = p.executeQuery();
-        }catch (SQLException e){
+            p.execute();
+        } catch (SQLException e){
             System.out.println(e);
         }
-        return  r;
     }
     public static  void  insertApp(Connection conn, String query){
         try{
@@ -138,9 +161,8 @@ public class Application {
     /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
     \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
     */
-
-    //Returns the idNum of the person logging in
     public static int login(Connection conn){
+        //Returns the idNum of the person logging in
         boolean success = false;
         int idNum = 0;
         while (success == false){
@@ -295,6 +317,18 @@ public class Application {
         // userInput.close();
         return userResponse;
     }
+    public static ResultSet getResultSet(Connection conn, String query){
+        ResultSet r = null;
+        try {
+            PreparedStatement p = conn.prepareStatement(query);
+            p.clearParameters();
+            r = p.executeQuery();
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+        return  r;
+    }
+
 
     /*
     /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
@@ -324,6 +358,26 @@ public class Application {
             System.out.println("Sorry, that user is not an administrator");
         }
     }
+    public static void applicantView(Connection conn){
+        //menuDisplaySubtitleHeader("Application Menu");
+        System.out.println("Please log in.");
+        login(conn);
+        boolean running = true;
+        while (running ){
+            //System.out.println("Please choose an option.\n1. View available housing\n2. Submit an application\n3. Go back\n");
+            int userChoice = getIntInput("Please choose an option.\n1. View available housing\n2. Submit an application\n3. Go back\n");
+            if (userChoice == 1){
+                checkAvailability(conn);
+            } else if (userChoice == 2){
+                applicationForm(conn);
+            } else if (userChoice == 3){
+                running = false;
+            } else {
+                System.out.println("Sorry, that is not a known option.");
+            }
+        }
+    }
+
 
     /*
     /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
