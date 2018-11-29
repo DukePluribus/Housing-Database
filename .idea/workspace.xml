@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12fb6153-923e-435d-8673-261eeaf26c6d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/HousingDatabaseNetbeans.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MaintainenceRequest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MaintainenceRequest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MaintenanceRequest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MaintenanceRequest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Housing Database/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Housing Database/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,23 +30,25 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="5" />
+          <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="5" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="8790" />
-          <entry key="txt" value="488" />
+          <entry key="java" value="9495" />
+          <entry key="txt" value="640" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8790" />
-          <entry key="PLAIN_TEXT" value="488" />
+          <entry key="JAVA" value="9495" />
+          <entry key="PLAIN_TEXT" value="640" />
         </counts>
       </usages-collector>
     </session>
@@ -57,11 +58,35 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="116" column="58" lean-forward="true" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
+            <state relative-caret-position="217">
+              <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#insertResident#0;class#Application#0" />
+                <element signature="method#insertApp#0;class#Application#0" />
+                <element signature="method#adminLogin#0;class#Application#0" />
+                <element signature="method#checkAvailability#0;class#Application#0" />
+                <element signature="method#loadData#0;class#Application#0" />
+                <element signature="method#getDate#0;class#Application#0" />
+                <element signature="method#getStringInput#0;class#Application#0" />
+                <element signature="method#getIntInput#0;class#Application#0" />
+                <element signature="method#getUserInput#0;class#Application#0" />
+                <element signature="method#getResultSet#0;class#Application#0" />
+                <element signature="method#menuDisplayTitleHeader#0;class#Application#0" />
+                <element signature="method#menuDisplaySubtitleHeader#0;class#Application#0" />
+                <element signature="method#printStars#0;class#Application#0" />
+                <element signature="method#printTabs#0;class#Application#0" />
+                <element signature="method#printOptionsAdministrators#0;class#Application#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Administrator.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="33" selection-start-column="33" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -81,6 +106,14 @@
       <find>login</find>
       <find>execute</find>
       <find>thank you fo</find>
+      <find>bellevue colle</find>
+      <find>loadda</find>
+      <find>checking</find>
+      <find>resident login</find>
+      <find>runProgram</find>
+      <find>login(conn);</find>
+      <find>resident</find>
+      <find>reside</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -95,9 +128,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="824" />
-    <option name="height" value="832" />
+    <option name="x" value="649" />
+    <option name="y" value="3" />
+    <option name="width" value="1030" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -133,6 +167,119 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2850575" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/MaintainenceRequest.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/MaintenanceRequest.txt</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.DS_Store</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/HousingDatabaseNetbeans.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -185,14 +332,28 @@
       <option name="project" value="LOCAL" />
       <updated>1543451813237</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Stress">
+      <created>1543452150390</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1543452150390</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Things are kinda working.&#10;&#10;TO DO&#10;-Make run method a loop&#10;-Show the user what they are choosing when they select a room preference">
+      <created>1543453982885</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1543453982885</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10714286" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20682302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -202,7 +363,36 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38720173" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4078091" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.324295" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2072165" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Learn" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.8761161" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -219,7 +409,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -227,16 +417,39 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Load method fully implemented. It will load from the .txt files that are now included in the folder. Just need to make sure the DB is empty before running load.&#10;Feel free to add more lines to the .txt files, just be sure to pay attention to foreign key constraints.&#10;Implemented method to return available rooms.&#10;Once I have the outline for the menus, I can start implementing methods to carry out menu options. Should be pretty easy." />
     <MESSAGE value="Stress" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stress" />
+    <MESSAGE value="Things are kinda working.&#10;&#10;TO DO&#10;-Make run method a loop&#10;-Show the user what they are choosing when they select a room preference" />
+    <option name="LAST_COMMIT_MESSAGE" value="Things are kinda working.&#10;&#10;TO DO&#10;-Make run method a loop&#10;-Show the user what they are choosing when they select a room preference" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Temp/HousingDatabaseNetbeans.java" />
+    <entry file="file://$PROJECT_DIR$/Administrator.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="33" selection-start-column="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="116" column="58" lean-forward="true" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
+        <state relative-caret-position="217">
+          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#insertResident#0;class#Application#0" />
+            <element signature="method#insertApp#0;class#Application#0" />
+            <element signature="method#adminLogin#0;class#Application#0" />
+            <element signature="method#checkAvailability#0;class#Application#0" />
+            <element signature="method#loadData#0;class#Application#0" />
+            <element signature="method#getDate#0;class#Application#0" />
+            <element signature="method#getStringInput#0;class#Application#0" />
+            <element signature="method#getIntInput#0;class#Application#0" />
+            <element signature="method#getUserInput#0;class#Application#0" />
+            <element signature="method#getResultSet#0;class#Application#0" />
+            <element signature="method#menuDisplayTitleHeader#0;class#Application#0" />
+            <element signature="method#menuDisplaySubtitleHeader#0;class#Application#0" />
+            <element signature="method#printStars#0;class#Application#0" />
+            <element signature="method#printTabs#0;class#Application#0" />
+            <element signature="method#printOptionsAdministrators#0;class#Application#0" />
           </folding>
         </state>
       </provider>

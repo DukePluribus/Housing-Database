@@ -14,14 +14,16 @@ public class Application {
         try {
             DriverManager.registerDriver(new Driver());
             Connection conn = DriverManager.getConnection(dbURL, "student", "password");
-            //dispMaintDepRep(conn);
             //loadData(conn);
-            //checkAvailability(conn);
-            runProgram(conn);
-            //checkAvailability(conn);
+            do {
+                runProgram(conn);
+            }
+            while(runProgram(conn)!=false);
+            conn.close();
         } catch (SQLException ex){
             System.out.println(ex);
         }
+
     }
 
 
@@ -66,6 +68,12 @@ public class Application {
         String rmtPref = getStringInput("Roommate preference? (Enter NA for no preference) ");
         String spouse = getStringInput("Will a spouse be living with you? If yes, enter name. If no, enter NA. ");
         System.out.println("Select 3 room preferences ");
+        System.out.println("Enter:[1] 2 Bedroom 4 Person Apartment with Twin Beds");
+        System.out.println("Enter:[2] 4 Bedroom 4 Person Apartment with Twin Beds");
+        System.out.println("Enter:[3] 1 Bedroom 1 Person Apartment with Twin Bed");
+        System.out.println("Enter:[4] 2 Bedroom 1 Person Suite with Double Bed");
+        System.out.println("Enter:[5] 2 Bedroom 2 Person Suite with Double Beds");
+        System.out.println("Enter:[6] 2 Bedroom 3 Person Suite with Twin Beds");
         int rPref1 = getIntInput("    First room priority: ");
         int rPref2 = getIntInput("    Second room priority: ");
         int rPref3 = getIntInput("    Third room priority: ");
@@ -124,8 +132,7 @@ public class Application {
             try {
                 String query = "SELECT RoomNum FROM Room WHERE TypeNum=" + pref[i] + " AND RoomStatus=0;";
                 ResultSet r = getResultSet(conn, query);
-                r.next();
-                if (r.getInt(1) == 0) {
+                if(r.next()){
                     return pref[i];
                 }
             }catch (SQLException e){
@@ -185,6 +192,8 @@ public class Application {
                         String lName = r.getString(3);
                         idNum = r.getInt(4);
                         System.out.println("Welcome to the BC Housing Hub " + fName + " " + lName + ".");
+
+                        System.out.println("\nExiting to main menu...");
                 }
             } catch (SQLException ex) {
                 System.out.println(ex);
@@ -239,7 +248,6 @@ public class Application {
         try {
             String date = getStringInput("What date would you like to look for? (YYYY-MM-DD format): ");
             String query = "SELECT RoomNum, BuildingNum FROM MaintenanceRequest WHERE SubmissionDate = '"+date+"';";
-            System.out.println(query);
             PreparedStatement p = conn.prepareStatement(query);
             p.clearParameters();
             ResultSet r = p.executeQuery();
@@ -254,6 +262,7 @@ public class Application {
         } catch (SQLException e) {
             System.out.println(e);
         }
+        printStars(90);
     }
     /*
     /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
@@ -266,7 +275,6 @@ public class Application {
             String[] tables = {"Person", "Employee","StudentAlumni", "Administrator","Maintainence", "Applicant",
                     "Resident","RoomType","Room","Application","MaintenanceRequest"};
             for (String table : tables) {
-                System.out.println("Loading " + table);
                 File file = new File(table + ".txt");
                 Scanner scan = null;
                 try {
@@ -330,8 +338,6 @@ public class Application {
         }
         return  r;
     }
-
-
     /*
     /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
     \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
@@ -394,6 +400,8 @@ public class Application {
         System.out.println("2. Applicant Registration/Apply");
         System.out.println("3. Admin");
         System.out.println("4. Quit");
+
+        System.out.println("\nEnter an option: ");
     }
     public static void menuDisplayTitleHeader(){
         printStars(80);
@@ -415,7 +423,7 @@ public class Application {
         printStars(80);
         System.out.println();
         printTabs(3);
-        System.out.print("Welecome to bellevue College Housing System");
+        System.out.print("Welecome to Bellevue College Housing System");
         System.out.println();
         printTabs(4);
         System.out.println(selection+"\n\n");
