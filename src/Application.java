@@ -76,6 +76,7 @@ public class Application {
 
         if(roomMatch == 0){
     //Try to find ANY available room
+        System.out.println("Could not find a room with your preferences. Now looking for any open room");
             try{
                 ResultSet r = getResultSet(conn,"SELECT RoomNum, BuildingNum, Address FROM Room WHERE RoomStatus = 0;");
                 if(r.next()){
@@ -83,7 +84,8 @@ public class Application {
                     int roomNum = r.getInt(1), buildNum = r.getInt(2);
                     String address = r.getString(3);
                     //Updates the room to now be full
-                    PreparedStatement p = conn.prepareStatement("UPDATE Room SET RoomStatus = 1 WHERE RoomNum = " + roomNum + " AND BuildingNum = " + buildNum + "AND Address = '" + address + "';");
+                    System.out.println("Address of new house is "+address);
+                    PreparedStatement p = conn.prepareStatement("UPDATE Room SET RoomStatus = 1 WHERE RoomNum = " + roomNum + " AND BuildingNum = " + buildNum + " AND Address = '" + address + "';");
                     p.clearParameters();
                     p.execute();
                     //Puts the idNum in the resident table
@@ -104,7 +106,7 @@ public class Application {
                 int roomNum = r.getInt(1), buildNum = r.getInt(2);
                 String address = r.getString(3);
             //Updates the room to now be full
-                PreparedStatement p = conn.prepareStatement("UPDATE Room SET RoomStatus = 1 WHERE RoomNum = "+roomNum+" AND BuildingNum = "+buildNum+"AND Address = '"+address+"';");
+                PreparedStatement p = conn.prepareStatement("UPDATE Room SET RoomStatus = 1 WHERE RoomNum = "+roomNum+" AND BuildingNum = "+buildNum+" AND Address = '"+address+"';");
                 p.clearParameters();
                 p.execute();
             //Puts the idNum in the resident table
